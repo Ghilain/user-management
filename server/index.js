@@ -9,6 +9,10 @@ app.use(cors());
 
 //Routes//
 
+// routes for registration and login
+
+app.use("/auth", require("./routes/userAuth"));
+
 app.listen(5000, () => {
     console.log("server running on port 5000");
 });
