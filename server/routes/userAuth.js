@@ -46,6 +46,18 @@ router.post("/signup", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
+    // Destruct the req.body
+
+    const{ email, password } = req.body;
+
+    // Check if user doesn't exist
+
+    const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [email]);
+
+    if (user.rows.length === 0){
+      return res.status(401).json("Password or Email is incorrect");
+    }
+
 
 
   } catch (err) {
