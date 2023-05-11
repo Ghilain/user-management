@@ -71,7 +71,11 @@ router.post("/login", async (req, res) => {
       ("Password or Email is incorrect");
     }
 
+    // Give user jwt token
 
+    const token = jwtGenerator(user.rows[0].id);
+
+    res.json({ token });
 
   } catch (err) {
     console.error(err.message);
